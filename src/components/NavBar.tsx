@@ -1,7 +1,6 @@
 "use client";
-import { RiCloseCircleFill, RiCloseFill, RiMenu3Fill } from "@remixicon/react";
-import { menu } from "framer-motion/client";
-import Link from 'next/link'
+import { RiCloseFill, RiMenu3Fill } from "@remixicon/react";
+import Link from "next/link";
 
 import React, { useState } from "react";
 
@@ -25,7 +24,7 @@ const NavBar = () => {
             { id: 4, href: "#testimonials", label: "Testimonials" },
             { id: 5, href: "#contact", label: "Contact" },
           ].map(({ href, label, id }) => (
-            <Link 
+            <Link
               href={href}
               key={id}
               className="text-white hover:text-stone-400 transition duration-300"

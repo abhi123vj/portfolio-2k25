@@ -1,12 +1,26 @@
+import About from "@/components/About";
 import BlurBackground from "@/components/BlurBackground";
+import Contacts from "@/components/Contacts";
+import Experience from "@/components/Experience";
+import Hero from "@/components/Hero";
 import NavBar from "@/components/NavBar";
-import Image from "next/image";
+import Projects from "@/components/Projects";
+import Testimonial from "@/components/Testimonial";
 
 export default function Home() {
   return (
     <>
       <BlurBackground />
       <NavBar />
+      <main className="antialiased overflow-x-hidden max-w-7xl mx-auto relative z-10">
+        <NavBar />
+        <Hero />
+        <Projects />
+        <About />
+        <Experience />
+        <Testimonial />
+        <Contacts />
+      </main>
     </>
     // <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 ">
     //   <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">

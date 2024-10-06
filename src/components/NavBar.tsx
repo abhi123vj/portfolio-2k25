@@ -1,6 +1,8 @@
 "use client";
 import { RiCloseCircleFill, RiCloseFill, RiMenu3Fill } from "@remixicon/react";
 import { menu } from "framer-motion/client";
+import Link from 'next/link'
+
 import React, { useState } from "react";
 
 const NavBar = () => {
@@ -13,7 +15,7 @@ const NavBar = () => {
     <nav className="fixed top-0 left-0 right-0 w-full z-50">
       <div className="flex justify-between items-center max-w-6xl mx-auto md:my-2 bg-stone-950/30 p-4 md:rounded-xl backdrop-blur-lg">
         <div className="text-white font-semibold text-lg uppercase">
-          <a href="/">Abhiram S</a>
+          <Link href="/">Abhiram S</Link>
         </div>
         <div className="hidden md:flex space-x-8">
           {[
@@ -23,13 +25,13 @@ const NavBar = () => {
             { id: 4, href: "#testimonials", label: "Testimonials" },
             { id: 5, href: "#contact", label: "Contact" },
           ].map(({ href, label, id }) => (
-            <a
+            <Link 
               href={href}
               key={id}
               className="text-white hover:text-stone-400 transition duration-300"
             >
               {label}
-            </a>
+            </Link>
           ))}
         </div>
         <div className="md:hidden">
@@ -55,14 +57,14 @@ const NavBar = () => {
             { id: 4, href: "#testimonials", label: "Testimonials" },
             { id: 5, href: "#contact", label: "Contact" },
           ].map(({ href, label, id }) => (
-            <a
+            <Link
               href={href}
               key={id}
               className="text-white hover:text-stone-400 transition duration-300"
               onClick={handleLintClick}
             >
               {label}
-            </a>
+            </Link>
           ))}
         </div>
       )}

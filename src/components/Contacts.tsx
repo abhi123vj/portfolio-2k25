@@ -59,8 +59,7 @@ const iconVariants = {
 };
 const Contacts = () => {
   return (
-    <section
-      className="min-h-screen flex flex-col justify-center px-4 md:px-10 scroll-mt-[80px] overflow-hidden "
+    <section className="px-4 md:px-10  py-10 scroll-mt-[80px] flex flex-col justify-center " 
       id="contact"
     >
       <h2 className="text-4xl md:text-6xl font-medium tracking-tight mb-10">
@@ -124,7 +123,7 @@ const Contacts = () => {
         )}
       </div>
       <motion.p
-        className="text-sm text-stone-400 pt-36"
+        className="text-sm text-stone-400 pt-20"
         initial="hidden"
         whileInView="visible"
         custom={1.6}

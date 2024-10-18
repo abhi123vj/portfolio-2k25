@@ -27,7 +27,7 @@ const CONTACT_CONTENT = {
       icon: "RiLinkedinFill",
     },
   ],
-  footerText: `© ${new Date().getFullYear()} Jason Root. All rights reserved.`,
+  footerText: `© ${new Date().getFullYear()} S Abhiram. All rights reserved.`,
 };
 const textVariants = {
   hidden: {
@@ -60,7 +60,7 @@ const iconVariants = {
 const Contacts = () => {
   return (
     <section
-      className="min-h-screen flex flex-col justify-center px-4 md:px-10"
+      className="min-h-screen flex flex-col justify-center px-4 md:px-10 scroll-mt-[80px] overflow-hidden "
       id="contact"
     >
       <h2 className="text-4xl md:text-6xl font-medium tracking-tight mb-10">
@@ -123,9 +123,8 @@ const Contacts = () => {
           }
         )}
       </div>
-
       <motion.p
-        className="text-sm text-stone-400 mt-36"
+        className="text-sm text-stone-400 pt-36"
         initial="hidden"
         whileInView="visible"
         custom={1.6}

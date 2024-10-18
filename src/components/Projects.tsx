@@ -8,10 +8,14 @@ const PROJECTS = [
   {
     id: 1,
     name: "Anon Insight",
-    description: "A platform for receiving anonymous feedback from your friends and family.",
+    description:
+      "A platform for receiving anonymous feedback from your friends and family.",
     image: "/assets/images/projects/projects1.webp",
-    link: "https://github.com/abhi123vj/anon-insight",
-  }
+    link: {
+      github: "https://github.com/abhi123vj/anon-insight",
+      demo: "https://anon-insight.4bh1.xyz",
+    },
+  },
 ];
 const Projects = () => {
   const projectsVariants = {
@@ -62,13 +66,22 @@ const Projects = () => {
                 <h2 className="text-2xl font-medium mb-4">{name}</h2>
                 <div className="flex flex-col justify-between">
                   <p className="mb-4 flex-grow text-2xl">{description}</p>
-                  <Link
-                    href={link}
-                    rel="noopener noreferrer"
-                    className="bg-white text-stone-900 rounded-full py-2 px-2 w-40 text-sm hover:bg-gray-100 text-center"
-                  >
-                    View on Github
-                  </Link>
+                  <div className="flex flex-row gap-2">
+                    <Link
+                      href={link.github}
+                      rel="noopener noreferrer"
+                      className="bg-white text-stone-900 rounded-full py-2 px-2 w-40 text-sm hover:bg-gray-100 text-center"
+                    >
+                      Github
+                    </Link>
+                    <Link
+                      href={link.demo}
+                      rel="noopener noreferrer"
+                      className="bg-white text-stone-900 rounded-full py-2 px-2 w-40 text-sm hover:bg-gray-100 text-center"
+                    >
+                      Demo
+                    </Link>
+                  </div>
                 </div>
               </div>
             </motion.div>

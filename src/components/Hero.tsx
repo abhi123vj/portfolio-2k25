@@ -97,7 +97,7 @@ const Hero = () => {
           variants={imageVariants}
         >
           <Image
-            src="/assets/images/persons/hero.jpg"
+            src="/assets/hero.webp"
             alt="Abhiram S"
             width={650}
             height={650}

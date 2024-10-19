@@ -8,7 +8,7 @@ const Testimonial = () => {
     {
       id: 1,
       name: "Joveal Johnson",
-      title: "Product Engineer, UST",
+      title: "Product Manager, UST",
       feedback:
         "Abhiram is one of the most talented developers I've had the pleasure of working with. His skills in frontend development are unparalleled, and his ability to solve complex problems with ease is truly impressive. His leadership and communication make him a standout developer in any team.",
       image: "/assets/images/persons/person1.webp",

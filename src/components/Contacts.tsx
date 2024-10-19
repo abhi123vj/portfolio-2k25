@@ -90,17 +90,18 @@ const Contacts = () => {
 
   const callContactApi = async () => {
     try {
-      const res = await fetch(`/api/contact`, {
+      await fetch(`/api/contact`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
         body: JSON.stringify(userData),
       });
-      const data = await res.json();
+      // const data = await res.json();
       notifySuccess();
     } catch (err) {
       notifyFailed();
+      console.log(err);
     } finally {
     }
     setUserData({

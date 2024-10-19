@@ -5,7 +5,7 @@ const Experience = () => {
   const EXPERIENCES = [
     {
       id: 1,
-      yearRange: "2022 — Now",
+      yearRange: "2022 SEP — Now",
       title: "Software Engineer at ZEDI Pvt",
       location: "Thiruvananthapuram, Kerala",
       description: [
@@ -14,6 +14,29 @@ const Experience = () => {
         "Fostering innovation through ongoing enhancements in system performance and user experience.",
       ],
     },
+    {
+      id: 2,
+      yearRange: "2021 DEC — 2022 MAY",
+      title: "Flutter Developer Intern at BzAnalytics",
+      location: "Remote",
+      description: [
+        "Built and optimized mobile applications using Flutter for various business needs.",
+        "Collaborated with senior developers to design user-friendly interfaces and seamless functionality.",
+        "Contributed to team projects by writing clean and maintainable code.",
+      ],
+    },
+    {
+      id: 3,
+      yearRange: "2021 JUN  — 2021 NOV",
+      title: "Flutter Developer Intern at UC Monks",
+      location: "Remote",
+      description: [
+        "Developed and maintained Flutter applications for mobile platforms.",
+        "Worked closely with cross-functional teams to enhance application features and performance.",
+        "Gained hands-on experience with state management, API integration, and UI/UX best practices.",
+      ],
+    },
+   
   ];
 
   const containerVariants = {

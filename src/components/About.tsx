@@ -2,8 +2,8 @@ import React from "react";
 
 import * as motion from "framer-motion/client";
 const paragraphs = [
-  "I am a full-stack developer with expertise in React, Next.js, Tailwind CSS, Node.js, and AWS. I build scalable, high-performance web applications tailored to deliver exceptional user experiences.",
-  "With a focus on clean, maintainable code, I help businesses thrive by creating modern, efficient solutions that drive growth and innovation. Let's bring your vision to life!",
+  "I am a software engineer with a strong background in building scalable, high-performance systems using modern technologies. I specialize in architecting robust backend services, optimizing performance, and ensuring reliable software delivery.",
+  "With a focus on efficient, maintainable solutions, I collaborate with cross-functional teams to create user-centric software that meets business goals. Let's work together to turn your ideas into impactful products!"
 ];
 const About = () => {
   const textVariants = {

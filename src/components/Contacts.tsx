@@ -1,7 +1,9 @@
 "use client";
-import React from "react";
+import React, { useState } from "react";
 import { motion } from "framer-motion";
 import { RiGithubFill, RiLinkedinFill, RiTwitterXFill } from "@remixicon/react";
+import { Bounce, ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 const CONTACT_CONTENT = {
   headline: "LET'S WORK ON SOMETHING GREAT",
   description:
@@ -44,6 +46,20 @@ const textVariants = {
     },
   }),
 };
+const divVariants = {
+  hidden: {
+    opacity: 0,
+  },
+  visible: (delay = 0) => ({
+    opacity: 1,
+    transition: {
+      duration: 0.5,
+      ease: "easeOut",
+      delay,
+    },
+  }),
+};
+
 const iconVariants = {
   hidden: {
     opacity: 0,
@@ -57,9 +73,72 @@ const iconVariants = {
     },
   }),
 };
+
 const Contacts = () => {
+  const [userData, setUserData] = useState<{
+    email: string;
+    username: string;
+    message: string;
+    subject: string;
+  }>({
+    username: "",
+    email: "",
+    message: "",
+    subject: "",
+  });
+  const [isReadOnly, setIsReadOnly] = useState<boolean>(false);
+
+  const callContactApi = async () => {
+    try {
+      const res = await fetch(`/api/contact`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(userData),
+      });
+      const data = await res.json();
+      notifySuccess();
+    } catch (err) {
+      notifyFailed();
+    } finally {
+    }
+    setUserData({
+      username: "",
+      email: "",
+      message: "",
+      subject: "",
+    });
+    setIsReadOnly(false);
+  };
+
+  const notifySuccess = () =>
+    toast.success("Will be contacting you soon!", {
+      position: "bottom-right",
+      autoClose: 4996,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: false,
+      draggable: true,
+      progress: undefined,
+      theme: "dark",
+      transition: Bounce,
+    });
+  const notifyFailed = () =>
+    toast.warn("Ops! Something went wrong, Try again later.", {
+      position: "bottom-right",
+      autoClose: 4996,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: false,
+      draggable: true,
+      progress: undefined,
+      theme: "dark",
+      transition: Bounce,
+    });
   return (
-    <section className="px-4 md:px-10  py-10 scroll-mt-[80px] flex flex-col justify-center " 
+    <section
+      className="px-4 md:px-10  py-10 scroll-mt-[80px] flex flex-col justify-center "
       id="contact"
     >
       <h2 className="text-4xl md:text-6xl font-medium tracking-tight mb-10">
@@ -75,53 +154,166 @@ const Contacts = () => {
       >
         {CONTACT_CONTENT.headline}
       </motion.h3>
-      <motion.p
-        className="text-lg md:text-2xl mb-6 max-w-3xl"
-        initial="hidden"
-        whileInView="visible"
-        custom={0.6}
-        variants={textVariants}
-      >
-        {CONTACT_CONTENT.description}
-      </motion.p>
-      <motion.a
-        href={`mailto:${CONTACT_CONTENT.email}`}
-        className="text-2xl md:text-3xl font-medium mt-8"
-        initial="hidden"
-        whileInView="visible"
-        custom={0.8}
-        variants={textVariants}
-      >
-        {CONTACT_CONTENT.email}
-      </motion.a>
-      <div className="flex space-x-6 mt-8 ">
-        {CONTACT_CONTENT.socialLinks.map(
-          ({ platform, url, ariaLabel, icon }, index) => {
-            const Icon =
-              icon === "RiTwitterXFill"
-                ? RiTwitterXFill
-                : icon === "RiGithubFill"
-                ? RiGithubFill
-                : RiLinkedinFill;
-            return (
-              <motion.a
-                key={platform}
-                href={url}
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label={ariaLabel}
-                // className="text-2xl md:text-3xl"
-                initial="hidden"
-                whileInView="visible"
-                custom={1.0 + index * 0.2}
-                variants={iconVariants}
+
+      <div className="flex flex-col md:flex-row justify-between  pt-8">
+        <div className="flex flex-col w-full md:w-1/2">
+          <motion.p
+            className="text-lg md:text-2xl mb-6 max-w-3xl flex-1"
+            initial="hidden"
+            whileInView="visible"
+            custom={0.6}
+            variants={textVariants}
+          >
+            {CONTACT_CONTENT.description}
+          </motion.p>
+          <motion.a
+            href={`mailto:${CONTACT_CONTENT.email}`}
+            className="text-2xl md:text-3xl font-medium mt-8"
+            initial="hidden"
+            whileInView="visible"
+            custom={0.8}
+            variants={textVariants}
+          >
+            {CONTACT_CONTENT.email}
+          </motion.a>
+          <div className="flex space-x-6 mt-8 pb-8">
+            {CONTACT_CONTENT.socialLinks.map(
+              ({ platform, url, ariaLabel, icon }, index) => {
+                const Icon =
+                  icon === "RiTwitterXFill"
+                    ? RiTwitterXFill
+                    : icon === "RiGithubFill"
+                    ? RiGithubFill
+                    : RiLinkedinFill;
+                return (
+                  <motion.a
+                    key={platform}
+                    href={url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label={ariaLabel}
+                    // className="text-2xl md:text-3xl"
+                    initial="hidden"
+                    whileInView="visible"
+                    custom={1.0 + index * 0.2}
+                    variants={iconVariants}
+                  >
+                    <Icon size={36} />
+                  </motion.a>
+                );
+              }
+            )}
+          </div>
+        </div>
+        <div className=" w-full md:w-1/2">
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            custom={0.6}
+            variants={divVariants}
+          >
+            <div className="bg-slate-900/55 p-6 ">
+              <form
+                onSubmit={async (e) => {
+                  e.preventDefault();
+                  setIsReadOnly(true);
+
+                  await callContactApi();
+                }}
+                className="space-y-8"
               >
-                <Icon size={36} />
-              </motion.a>
-            );
-          }
-        )}
+                <div>
+                  <label
+                    htmlFor="name"
+                    className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+                  >
+                    Your name
+                  </label>
+                  <input
+                    disabled={isReadOnly}
+                    value={userData.username}
+                    onChange={(e) => {
+                      setUserData({ ...userData, username: e.target.value });
+                    }}
+                    type="text"
+                    id="name"
+                    className="shadow-sm bg-gray-900/75 border text-sm   w-full p-2.5 "
+                    placeholder="John Doe"
+                    required
+                  />
+                </div>
+                <div>
+                  <label
+                    htmlFor="email"
+                    className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+                  >
+                    Your email
+                  </label>
+                  <input
+                    disabled={isReadOnly}
+                    value={userData.email}
+                    onChange={(e) => {
+                      setUserData({ ...userData, email: e.target.value });
+                    }}
+                    type="email"
+                    id="email"
+                    className="shadow-sm bg-gray-900/75 border text-sm   w-full p-2.5 "
+                    placeholder="john@example.com"
+                    required
+                  />
+                </div>
+                <div>
+                  <label
+                    htmlFor="subject"
+                    className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+                  >
+                    Subject
+                  </label>
+                  <input
+                    disabled={isReadOnly}
+                    value={userData.subject}
+                    onChange={(e) => {
+                      setUserData({ ...userData, subject: e.target.value });
+                    }}
+                    type="text"
+                    id="subject"
+                    className="shadow-sm bg-gray-900/75 border text-sm   w-full p-2.5"
+                    placeholder="Let me know how we can help you"
+                    required
+                  />
+                </div>
+                <div className="sm:col-span-2">
+                  <label
+                    htmlFor="message"
+                    className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-400"
+                  >
+                    Your message
+                  </label>
+                  <textarea
+                    disabled={isReadOnly}
+                    value={userData.message}
+                    onChange={(e) => {
+                      setUserData({ ...userData, message: e.target.value });
+                    }}
+                    id="message"
+                    rows={6}
+                    className="shadow-sm bg-gray-900/75 border text-sm   w-full p-2.5"
+                    placeholder="Leave a comment..."
+                  ></textarea>
+                </div>
+                <button
+                  disabled={isReadOnly}
+                  type="submit"
+                  className="py-3 px-5 text-sm font-medium text-center text-white rounded-lg bg-primary-700 sm:w-fit hover:bg-primary-800 focus:ring-4 focus:outline-none focus:ring-primary-300 dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800"
+                >
+                  Send message
+                </button>
+              </form>
+            </div>
+          </motion.div>
+        </div>
       </div>
+
       <motion.p
         className="text-sm text-stone-400 pt-20"
         initial="hidden"
@@ -131,6 +323,7 @@ const Contacts = () => {
       >
         {CONTACT_CONTENT.footerText}
       </motion.p>
+      <ToastContainer />
     </section>
   );
 };

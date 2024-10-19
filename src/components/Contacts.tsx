@@ -157,7 +157,7 @@ const Contacts = () => {
       </motion.h3>
 
       <div className="flex flex-col md:flex-row justify-between  pt-8">
-        <div className="flex flex-col w-full md:w-1/2">
+        <div className="flex flex-col w-full md:w-2/3">
           <motion.p
             className="text-lg md:text-2xl mb-6 max-w-3xl flex-1"
             initial="hidden"
@@ -206,14 +206,14 @@ const Contacts = () => {
             )}
           </div>
         </div>
-        <div className=" w-full md:w-1/2">
+        <div className=" w-full md:w-1/3">
           <motion.div
             initial="hidden"
             whileInView="visible"
             custom={0.6}
             variants={divVariants}
           >
-            <div className="bg-slate-900/55 p-6 ">
+            <div className="bg-stone-500/10 p-6 ">
               <form
                 onSubmit={async (e) => {
                   e.preventDefault();
@@ -226,7 +226,7 @@ const Contacts = () => {
                 <div>
                   <label
                     htmlFor="name"
-                    className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+                    className="block mb-2 text-sm font-medium text-gray-300"
                   >
                     Your name
                   </label>
@@ -238,7 +238,7 @@ const Contacts = () => {
                     }}
                     type="text"
                     id="name"
-                    className="shadow-sm bg-gray-900/75 border text-sm   w-full p-2.5 "
+                    className="shadow-sm bg-stone-500/30 border text-sm   w-full p-2.5 "
                     placeholder="John Doe"
                     required
                   />
@@ -246,7 +246,7 @@ const Contacts = () => {
                 <div>
                   <label
                     htmlFor="email"
-                    className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+                    className="block mb-2 text-sm font-medium text-gray-300"
                   >
                     Your email
                   </label>
@@ -258,7 +258,7 @@ const Contacts = () => {
                     }}
                     type="email"
                     id="email"
-                    className="shadow-sm bg-gray-900/75 border text-sm   w-full p-2.5 "
+                    className="shadow-sm bg-stone-500/30 border text-sm   w-full p-2.5 "
                     placeholder="john@example.com"
                     required
                   />
@@ -266,7 +266,7 @@ const Contacts = () => {
                 <div>
                   <label
                     htmlFor="subject"
-                    className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+                    className="block mb-2 text-sm font-medium text-gray-300"
                   >
                     Subject
                   </label>
@@ -278,7 +278,7 @@ const Contacts = () => {
                     }}
                     type="text"
                     id="subject"
-                    className="shadow-sm bg-gray-900/75 border text-sm   w-full p-2.5"
+                    className="shadow-sm bg-stone-500/30 border text-sm   w-full p-2.5"
                     placeholder="Let me know how we can help you"
                     required
                   />
@@ -286,7 +286,7 @@ const Contacts = () => {
                 <div className="sm:col-span-2">
                   <label
                     htmlFor="message"
-                    className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-400"
+                    className="block mb-2 text-sm font-medium text-gray-400"
                   >
                     Your message
                   </label>
@@ -298,7 +298,7 @@ const Contacts = () => {
                     }}
                     id="message"
                     rows={6}
-                    className="shadow-sm bg-gray-900/75 border text-sm   w-full p-2.5"
+                    className="shadow-sm bg-stone-500/30 border text-sm   w-full p-2.5"
                     placeholder="Leave a comment..."
                   ></textarea>
                 </div>

@@ -16,6 +16,17 @@ const PROJECTS = [
       demo: "https://anon-insight.4bh1.xyz",
     },
   },
+  {
+    id: 2,
+    name: "Quick Convert",
+    description:
+      "Effortlessly transform images, audio, and videos without any restrictions.",
+    image: "/assets/images/projects/projects1.webp",
+    link: {
+      github: "https://github.com/abhi123vj/quick-convert.git",
+      demo: "https://converter.4bh1.xyz/",
+    },
+  },
 ];
 const Projects = () => {
   const projectsVariants = {

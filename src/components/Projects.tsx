@@ -20,8 +20,8 @@ const PROJECTS = [
     id: 2,
     name: "Quick Convert",
     description:
-      "Effortlessly transform images, audio, and videos without any restrictions.",
-    image: "/assets/images/projects/projects1.webp",
+      "Effortlessly transform images, audio, and videos.",
+    image: "/assets/images/projects/projects2.webp",
     link: {
       github: "https://github.com/abhi123vj/quick-convert.git",
       demo: "https://converter.4bh1.xyz/",

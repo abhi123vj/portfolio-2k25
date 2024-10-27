@@ -48,7 +48,7 @@ const HERO_CONTENTS = {
   description:
     "I empower businesses to turn their ideas into impactful digital solutions with innovative web applications",
   resumeLinkText: "Download Resume",
-  resumeLink: "/assets/documents/resume.pdf",
+  resumeLink: "/assets/documents/Abhiram-Software_Engineer_Resume.pdf",
 };
 const Hero = () => {
   return (
